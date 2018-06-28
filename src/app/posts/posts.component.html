@@ -1,0 +1,25 @@
+<div *ngIf="loading">
+  <div class="loader"></div>
+</div>
+
+
+
+
+
+
+<div *ngIf="!loading">
+  <div *ngFor="let post of list.list">
+    <div class="card-deck mb-3 text-center custom-card">
+      <div class="card mb-4 box-shadow">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-light">{{ post?.title }}</h4>
+        </div>
+        <div class="card-body">
+          {{ post?.body }}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
