@@ -13,7 +13,28 @@ import 'rxjs/add/operator/catch';
 export class PostsService {
 
   constructor(private http: Http) { }
+  listPostsWithUser(): Observable<ListPosts> {
+    let url : string;
+    url = `${environment.rootApi}/posts`; 
 
+    return this.http.get(url)
+      .map(res => {
+        let item = res.json();
+        let posts = new ListPosts();
+        
+        posts.list = [];
+        for(let i = 0;i < item.length;i++){
+          posts.list[i] =  new Post();
+          posts.list[i].body = item[i].body;
+          posts.list[i].id = item[i].id;
+          posts.list[i].title = item[i].title;
+          posts.list[i].userId = item[i].userId;
+        }
+       
+        return posts;
+    })
+    .catch(this.lidarErro);
+  }
   listPosts(): Observable<ListPosts> {
     let url : string;
     url = `${environment.rootApi}/posts`; 
@@ -56,6 +77,8 @@ export class PostsService {
     })
     .catch(this.lidarErro);
   }
+
+  
 
   private lidarErro(erro: Response | any) {
     console.error(erro.message || erro);

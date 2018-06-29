@@ -1,0 +1,25 @@
+<div *ngIf="loading">
+  <div class="loader"></div>
+</div>
+
+<div *ngIf="!loading" class="top_buffer">
+  <h2>Posts</h2>
+  <ul class="list-group list-group-flush" *ngFor="let post of list.list">
+    <div class="list-group-item" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapse"
+      (click)="findUser(post.userId, post.id - 1)" attr.href="#collapse{{ post.id }}">
+      {{ post?.title }}
+    </div>
+    <div class="collapse" attr.id="collapse{{ post.id }}">
+      <div class="card card-body">
+        {{ loadingInfo }}
+        <span *ngIf="loadingInfo == ''">
+          <div>
+            <b>Author:</b> {{ post?.user?.name }}
+            <br>
+            <b>E-mail:</b> {{ post?.user?.email }}
+          </div>
+        </span>
+      </div>
+    </div>
+  </ul>
+</div>

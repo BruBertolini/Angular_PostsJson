@@ -12,13 +12,25 @@ export class DetailComponent implements OnInit {
   constructor(private postService: PostsService) { }
 
   userSubscription: Subscription;
-  @Input() show: boolean;
+  @Input() idUser: string;
+  @Input() type: string;
+  name: string;
+  email: string;
+  loading: boolean;
+
+
   ngOnInit() {
+    
   }
 
   findUserInfo(){
-    this.userSubscription = this.postService.getUserInfo(1).subscribe( 
+    this.loading = true;
+    this.userSubscription = this.postService.getUserInfo(this.idUser).subscribe( 
       data => {
+
+        this.loading = false;
+        this.name = data.name;
+        this.email = data.email;
         
           console.log(data);
        

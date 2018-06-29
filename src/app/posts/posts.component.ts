@@ -1,7 +1,8 @@
-import { ListPosts } from './../shared/entities/listPosts';
+import { Component, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
+
 import { PostsService } from './posts.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ListPosts } from './../shared/entities/listPosts';
 
 @Component({
   selector: 'app-posts',
@@ -18,12 +19,12 @@ export class PostsComponent implements OnInit {
   constructor(private postService: PostsService) { }
 
   ngOnInit() {
-
     this.loading = true;  
 
     this.postSubscription = this.postService.listPosts().subscribe( 
       data => {
         this.loading = false;  
+        
         if(data.list.length != 0){
           this.list = data;
           console.log(this.list);
@@ -37,8 +38,6 @@ export class PostsComponent implements OnInit {
       }
     );
   }
-
-
  
   ngOnDestroy(){
     try {

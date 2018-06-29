@@ -2,18 +2,19 @@ import { PostsModule } from './posts/posts.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
+import { routing } from './app.routing';
 import { AppComponent } from './app.component';
-import { PostsComponent } from './posts/posts.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PostsComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    PostsModule
+    PostsModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]

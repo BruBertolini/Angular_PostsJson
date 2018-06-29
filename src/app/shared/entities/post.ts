@@ -1,3 +1,6 @@
+import { User } from "./user";
+
+
 export class Post {
 
 
@@ -5,5 +8,8 @@ export class Post {
     id: string;
     title: string;
     body: string;
+    user: User;
+
+
 
 }
