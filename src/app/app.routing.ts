@@ -6,8 +6,8 @@ import { ListTitlesComponent } from './posts/list-titles/list-titles.component';
 
 
 const APP_ROUTES: Routes = [
-    { path: '', component: PostsComponent },
-    { path: 'listTitles', component: ListTitlesComponent }
+    { path: 'listPost', component: PostsComponent },
+    { path: '', component: ListTitlesComponent }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);
