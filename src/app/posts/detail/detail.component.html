@@ -1,22 +1,18 @@
-<div *ngIf="type == 'popover'">
-  <popover-content #myPopover id="myPopover" accesskey="" placement="bottom" [animation]="true" [closeOnClickOutside]="true"
-    class="popoverTitle">
-    <span>
-      <div *ngIf="loading">
-        Loading...
-      </div>
-      <div *ngIf="!loading">
-        <b>Author:</b> {{ name }}
-        <br>
-        <b>E-mail:</b> {{ email }}
-      </div>
-    </span>
+<popover-content #myPopover id="myPopover" accesskey="" placement="bottom" [animation]="true" [closeOnClickOutside]="true"
+  class="popoverTitle">
+  <span>
+    <div *ngIf="loading">
+      Loading...
+    </div>
+    <div *ngIf="!loading">
+      <b>Author:</b> {{ name }}
+      <br>
+      <b>E-mail:</b> {{ email }}
+    </div>
+  </span>
 
-  </popover-content>
+</popover-content>
 
-  <a [popover]="myPopover" (click)="findUserInfo()">
-    <img src="../assets/img/info.png" height="20px" />
-  </a>
-
-</div>
-
+<a [popover]="myPopover" (click)="findUserInfo()">
+  <img src="../assets/img/info.png" height="20px" />
+</a>
