@@ -1,27 +1,19 @@
-# FrontPosts
+# Projeto
+Projeto Angular gerado com o Angular CLI (Versão 1.7.3).
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+Este projeto tem como objetivo listar o conteúdo de posts recebidos pela API do site https://jsonplaceholder.typicode.com/.
 
-## Development server
+## Desenvolvimento
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Para rodar o servidor no ambiente de desenvolvimento, no terminal inserir o comando 'ng serve'. Neste modo, qualquer alteração feita e salva no projeto, refletirá automaticamente.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Utilizar o comando 'ng build' para dar o build no projeto. Esse comando criará uma nova pasta no diretório da aplicação chamada 'dist/'.
+Se utilizar a flag '--prod' o projeto será otimizado no build de produção.
 
-## Running unit tests
+A flag '--prod'utiliza o The Ahead-of-Time (AOT) Compiler para converter o cõdigo para Javascript, faz o deploy do enviroment de production (para casos de alteração de link de API, por exemplo), minifica os arquivos e remove código inutilizado.
+
+## Testes unitários
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
