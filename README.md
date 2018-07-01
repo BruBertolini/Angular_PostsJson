@@ -18,4 +18,4 @@ A flag `--prod` utiliza o The Ahead-of-Time (AOT) Compiler para converter o cõd
 
 ## Testes unitários
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Utilizar o comando `ng test -cc` para executar os testes unitários da aplicação. Para conferir o progresso de cobertura de testes, acessar o arquivo `coverage/html/index.html` 
