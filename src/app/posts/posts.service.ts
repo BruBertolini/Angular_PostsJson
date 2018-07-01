@@ -4,7 +4,7 @@ import { ListPosts } from './../shared/entities/listPosts';
 import { environment } from './../../environments/environment';
 import { Http } from '@angular/http';
 
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -13,77 +13,56 @@ import 'rxjs/add/operator/catch';
 export class PostsService {
 
   constructor(private http: Http) { }
-  listPostsWithUser(): Observable<ListPosts> {
-    let url : string;
-    url = `${environment.rootApi}/posts`; 
 
-    return this.http.get(url)
-      .map(res => {
-        let item = res.json();
-        let posts = new ListPosts();
-        
-        posts.list = [];
-        for(let i = 0;i < item.length;i++){
-          posts.list[i] =  new Post();
-          posts.list[i].body = item[i].body;
-          posts.list[i].id = item[i].id;
-          posts.list[i].title = item[i].title;
-          posts.list[i].userId = item[i].userId;
-        }
-       
-        return posts;
-    })
-    .catch(this.lidarErro);
-  }
+  // listar todos os posts
   listPosts(): Observable<ListPosts> {
-    let url : string;
-    url = `${environment.rootApi}/posts`; 
+    let url: string;
+    url = `${environment.rootApi}/posts`;
 
     return this.http.get(url)
       .map(res => {
-        let item = res.json();
-        let posts = new ListPosts();
-        
+        const item = res.json();
+        const posts = new ListPosts();
+
         posts.list = [];
-        for(let i = 0;i < item.length;i++){
+        for (let i = 0; i < item.length; i++) {
           posts.list[i] =  new Post();
           posts.list[i].body = item[i].body;
           posts.list[i].id = item[i].id;
           posts.list[i].title = item[i].title;
           posts.list[i].userId = item[i].userId;
         }
-       
+
         return posts;
     })
-    .catch(this.lidarErro);
+    .catch(err => {
+      console.error(err.message || err);
+      return Observable.throw(err.message || err);
+    });
   }
 
+  // buscar as informacoes do autor do post
   getUserInfo(userId): Observable<User> {
-    let url : string;
-    url = `${environment.rootApi}/users/${userId}`; 
+    let url: string;
+    url = `${environment.rootApi}/users/${userId}`;
 
     return this.http.get(url)
       .map(res => {
-        let item = res.json();
-        let user = new User();
-        
+        const item = res.json();
+        const user = new User();
+
         user.id = item.id;
         user.name = item.name;
         user.username = item.username;
         user.email = item.email;
-        
-       
+
+
         return user;
     })
-    .catch(this.lidarErro);
+    .catch(err => {
+      console.error(err.message || err);
+      return Observable.throw(err.message || err);
+    });
   }
-
-  
-
-  private lidarErro(erro: Response | any) {
-    console.error(erro.message || erro);
-    return Observable.throw(erro.message || erro);
-  }
-
 
 }

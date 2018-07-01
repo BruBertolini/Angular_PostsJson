@@ -1,4 +1,4 @@
-import { User } from "./user";
+import { User } from './user';
 
 
 export class Post {
@@ -9,7 +9,4 @@ export class Post {
     title: string;
     body: string;
     user: User;
-
-
-
 }

@@ -1,15 +1,14 @@
 import { Subscription } from 'rxjs/Subscription';
 import { PostsService } from './../posts.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.css']
 })
-export class DetailComponent implements OnInit {
-
-  constructor(private postService: PostsService) { }
+export class DetailComponent {
+  constructor(private postService: PostsService) {}
 
   userSubscription: Subscription;
   @Input() idUser: string;
@@ -18,28 +17,22 @@ export class DetailComponent implements OnInit {
   email: string;
   loading: boolean;
 
-
-  ngOnInit() {
-    
-  }
-
-  findUserInfo(){
+  // Encontrar as informacoes do usuario baseado no Input
+  findUserInfo() {
     this.loading = true;
-    this.userSubscription = this.postService.getUserInfo(this.idUser).subscribe( 
+    this.userSubscription = this.postService.getUserInfo(this.idUser).subscribe(
       data => {
-
-        this.loading = false;
-        this.name = data.name;
-        this.email = data.email;
-        
-          console.log(data);
-       
+        if (data) {
+          this.loading = false;
+          this.name = data.name;
+          this.email = data.email;
+        }
       },
       error => {
         console.log(error);
+        this.name = 'N/A';
+        this.email = 'N/A';
       }
     );
   }
-
-
 }
